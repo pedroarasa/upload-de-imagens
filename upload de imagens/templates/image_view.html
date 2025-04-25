@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Imagem - {{ img[1] }}</title>
+</head>
+<body>
+    <h2>{{ img[1] }}</h2>
+    <img src="/uploads/{{ img[2] }}" width="300"><br>
+    <p>Telefone: {{ img[3] }}</p>
+    <p>Likes: {{ img[5] }} | Dislikes: {{ img[6] }}</p>
+    <a href="/like/{{ img[0] }}">👍 Curti</a> |
+    <a href="/dislike/{{ img[0] }}">👎 Não Curti</a><br><br>
+
+    <form method="POST" action="/delete/{{ img[0] }}">
+        <input type="password" name="senha" placeholder="Digite a senha">
+        <button type="submit">Excluir imagem</button>
+    </form>
+</body>
+</html>
