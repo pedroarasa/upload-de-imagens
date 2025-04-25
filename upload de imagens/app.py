@@ -2,6 +2,9 @@ from flask import Flask, render_template, request, redirect, url_for, send_from_
 import os
 import psycopg2
 from werkzeug.utils import secure_filename
+from dotenv import load_dotenv
+
+load_dotenv()  # Carrega as variáveis do .env
 
 app = Flask(__name__)
 app.secret_key = "supersecretkey"
@@ -11,7 +14,8 @@ MAX_FILE_SIZE = 5 * 1024 * 1024  # 5MB
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-DB_URL = "postgresql://neondb_owner:npg_izJKD7Qm0kEh@ep-wandering-resonance-a9e1300q-pooler.gwc.azure.neon.tech/neondb?sslmode=require"
+# Pega a URL do banco do arquivo .env
+DB_URL = os.getenv("DATABASE_URL")
 
 def connect_db():
     return psycopg2.connect(DB_URL)
